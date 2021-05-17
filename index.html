@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
@@ -7,31 +8,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolflix</title>
 
-    <link rel="stylesheet" href="style.css">
-    
-</head>
-<body>
-    
-    <div id="app">
-        
-        <input type="text" placeholder="Boolflix production" v-model="searchText" @keyup="clickSearch">
-        <button @click="clickSearch">cerca</button>
+    <link rel="stylesheet" href="css/flag-icon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <ul>
-        <!-- lista con i film  -->
-        <li class="movies" v-for="movie in arrayTMDB">
-            <h3>{{movie.title}}</h3>
-            <p>{{movie.original_title}}</p>
-            <p>{{movie.original_language}}</p>
-            <p>{{movie.vote_average}}</p>
-        </li>
-    </ul>
-        
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <input type="text" placeholder="Boolflix production" v-model="searchText">
+        <button @click="search">cerca</button>
+
+
+        <ul>
+            <!-- lista con i film  -->
+            <li class="movies" v-for="movie in listTMDB">
+                <img :src="getImgSrc(movie)" alt="">
+                <h3>{{movie.title}}</h3>
+                <p>{{movie.original_title}}</p>
+                <!-- <p><span :class="`flag-icon flag-icon-gr}`"></span></p> -->
+                <p><span class="flag-icon" v-bind:class="`flag-icon-${mapFlagIco(movie)}`"></span></p>
+
+                <!-- stampa le stelle piene e vuote in base a vote_average -->
+                <span class="fa-star" v-for="star in getMovieStars(movie)"
+                    :class="{'fa': star === true, 'far': star === false}"></span>
+
+
+            </li>
+        </ul>
+
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="boolflix.js"></script>
 
 </body>
+
 </html>
