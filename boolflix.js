@@ -111,7 +111,7 @@ const app = new Vue({
         // ritorna il poster del film/serie altrimenti uno di default 185 tra le grandezze disponibili
         getImgSrc(movie) {
             if (movie.poster_path) {
-                return `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
+                return `https://image.tmdb.org/t/p/w342${movie.poster_path}`;
             } else {
                 // immagine locale sostitutiva
                 return "img/imagine-unavailable.png"

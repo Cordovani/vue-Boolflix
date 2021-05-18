@@ -19,9 +19,14 @@
 
     <div id="app">
 
-        <input type="text" placeholder="Boolflix production" v-model="searchText">
-        <button @click="search">cerca</button>
-
+        <header>
+            <h1>Boolflix</h1>
+            <div>
+                <input type="text" placeholder="Boolflix production" v-model="searchText">
+                <button @click="search">cerca</button>
+            </div>
+        </header>
+        
 
         <ul>
             <!-- lista con i film  -->
