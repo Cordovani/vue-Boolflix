@@ -96,16 +96,19 @@ const app = new Vue({
             }
         },
 
-        // creo un oggetto che determina il numero di stelle piene e vuote
+        // creo un array che determina il numero di stelle piene e vuote
         getMovieStars(movie) {
-            // per avere 5 stelle da vote_average  1-10
+            // per avere 5 stelle da vote_average  0 - 10
             const movieVote = Math.round(movie.vote_average / 2);
             const starArray = []
 
-            // pusha nell'array fino all'intero arrotondato del voto es 4.7 --> 4 
+            // pusha nell'array fino all'intero arrotondato per difetto del voto medio es: 4.7 --> 4 
             for (let i = 1; i <= 5; i++) {
-                starArray.push(i <= movieVote);
+                starArray.push(i < movieVote);
             }
+
+            // arrey di booleani se la stella sarà piena (true) o vuota (false)
+            return starArray;
         },
 
         // ritorna il poster del film/serie altrimenti uno di default 185 tra le grandezze disponibili
@@ -114,7 +117,7 @@ const app = new Vue({
                 return `https://image.tmdb.org/t/p/w342${movie.poster_path}`;
             } else {
                 // immagine locale sostitutiva
-                return "img/imagine-unavailable.png"
+                return "img/image-unavailable.png"
             }
         },
 
