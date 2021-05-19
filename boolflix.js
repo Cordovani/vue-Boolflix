@@ -49,9 +49,11 @@ const app = new Vue({
                             return tvSerie;
                         });
                     }
+
+                    this.listTMDB = this.moviesTMDB.concat(this.tvSeriesTMDB);
+                    
                 });
 
-            this.listTMDB = this.moviesTMDB.concat(this.tvSeriesTMDB);
         },
 
         /*

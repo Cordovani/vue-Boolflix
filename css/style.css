@@ -5,11 +5,15 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: rgb(95, 91, 91);
+}
 
 .movies {
-    width: 33%;
+    width: 200px;
     padding: 3px;
     background-color: white;
+    margin: 13px 0px;
 }
 
 header {
@@ -30,9 +34,6 @@ header {
     list-style: none;   
 }
 
-#app{
-    background-color: rgb(95, 91, 91);
-}
 
 ul img {
     width: 100%;
