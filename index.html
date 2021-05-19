@@ -32,15 +32,17 @@
             <!-- lista con i film  -->
             <li class="movies" v-for="movie in listTMDB">
                 <img :src="getImgSrc(movie)" alt="">
-                <h3>{{movie.title}}</h3>
-                <p>{{movie.original_title}}</p>
-                <!-- <p><span :class="`flag-icon flag-icon-gr}`"></span></p> -->
+                <div v-if="movie.title != movie.original_title">
+                    <h3>{{movie.title}}</h3>
+                    <p>{{movie.original_title}}</p>
+                    <!-- <p><span :class="`flag-icon flag-icon-gr}`"></span></p> -->
+                </div>
+                <h3 v-else>{{movie.title}}</h3>
                 <p><span class="flag-icon" v-bind:class="`flag-icon-${mapFlagIco(movie)}`"></span></p>
                 <p>{{movie.vote_average}}</p>
                 <!-- stampa le stelle piene ".fa-star" e vuote ".fa-star-o" in base a vote_average -->
                 <span class="fa" v-for="star in getMovieStars(movie)"
                     :class="{'fa-star': star === true, 'fa-star-o': star === false}"></span>
-
 
             </li>
         </ul>
